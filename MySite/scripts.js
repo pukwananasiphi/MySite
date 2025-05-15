@@ -90,56 +90,32 @@ document.addEventListener('DOMContentLoaded', function() {
     setInterval(nextSlide, 3000);
   }
   
-  // Form Validation
-  const contactForm = document.querySelector('#contact-form');
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Basic validation
-      let valid = true;
-      const nameInput = document.querySelector('#name');
-      const emailInput = document.querySelector('#email');
-      const messageInput = document.querySelector('#message');
-      
-      if (nameInput.value.trim() === '') {
-        valid = false;
-        nameInput.classList.add('error');
-      } else {
-        nameInput.classList.remove('error');
-      }
-      
-      if (emailInput.value.trim() === '' || !isValidEmail(emailInput.value)) {
-        valid = false;
-        emailInput.classList.add('error');
-      } else {
-        emailInput.classList.remove('error');
-      }
-      
-      if (messageInput.value.trim() === '') {
-        valid = false;
-        messageInput.classList.add('error');
-      } else {
-        messageInput.classList.remove('error');
-      }
-      
-      if (valid) {
-        // In a real application, you would send the form data to a server here
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
-      } else {
-        alert('Please fill in all required fields correctly.');
-      }
-    });
-  }
-  
+ 
   // Helper function to validate email
   function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   }
-  
+
+
+// Initialize EmailJS with your public key
+(function() {
+    emailjs.init("oNg-oQJSs6vc4ZuT_"); // Replace with your EmailJS public key
+})();
+
+// Add event listener to the form
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent default form submission
+
+    // Send the form using EmailJS
+    emailjs.sendForm("service_0uui6ru", "template_5ozwb1s", this)
+        .then(function() {
+            alert("Thanks for reaching out.I'll get back to you soon!");
+        }, function(error) {
+            alert("Failed to send message. Please try again.");
+            console.error("EmailJS error:", error);
+        });
+});
   // Active Nav Link
   const currentLocation = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-menu a');
