@@ -170,12 +170,17 @@ header {
   background: linear-gradient(to bottom right, #fff, #f9fafb);
 }
 
+
 .hero-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   text-align: center;
+  gap: rem;
 }
+
+
 
 .hero-image {
   border-radius: 50%;
@@ -186,7 +191,6 @@ header {
   object-fit: cover;
   margin-bottom: 2rem;
 }
-
 .hero-title {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -672,7 +676,7 @@ textarea.form-control {
 footer {
   background-color: var(--dark-color);
   color: #fff;
-  padding: 3rem 0;
+  padding: 1rem 0;
 }
 
 .footer-container {
@@ -734,6 +738,7 @@ footer {
 }
 
 .footer-copyright {
+  
   color: #9CA3AF;
   font-size: 14px;
 }
