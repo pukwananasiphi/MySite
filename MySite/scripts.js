@@ -116,17 +116,22 @@ document.getElementById("contact-form").addEventListener("submit", function(even
             console.error("EmailJS error:", error);
         });
 });
-  // Active Nav Link
-  const currentLocation = window.location.pathname;
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  
-  navLinks.forEach(link => {
-    const linkPath = link.getAttribute('href');
-    
-    if (currentLocation === linkPath || 
-        (currentLocation === '/' && linkPath === '/index.html') ||
-        (currentLocation.includes(linkPath) && linkPath !== '/')) {
-      link.classList.add('active');
-    }
-  });
+
+ const currentLocation = window.location.pathname;
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+navLinks.forEach(link => {
+  const linkPath = new URL(link.href).pathname;
+
+  if (
+    currentLocation === linkPath ||
+    (currentLocation === '/' && linkPath.endsWith('/index.html')) ||
+    (currentLocation.includes(linkPath) && linkPath !== '/')
+  ) {
+    link.classList.add('active');
+  } else {
+    link.classList.remove('active');
+  }
+});
+
 });
