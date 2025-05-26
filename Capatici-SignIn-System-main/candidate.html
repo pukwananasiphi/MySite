@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAPACITI Digital Attendance System</title>
+  <link rel="stylesheet" href="/candidate.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="/assets/image.png" alt="CAPACITI" class="logo">
+        </div>
+        
+        <div class="user-info">
+          <div class="user-welcome">
+            <div class="username">Welcome, Mmabotse</div>
+            <div class="current-time" id="current-time">Loading...</div>
+          </div>
+          
+          <div class="avatar">
+            <div class="avatar-fallback">
+              <i class="user-icon">👤</i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item active">
+              <a href="#" class="sidebar-link">
+                <i class="icon">🏠</i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="#" class="sidebar-link">
+                <i class="icon">👤</i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li class="sidebar-menu-item">
+              <a href="#" class="sidebar-link">
+                <i class="icon">🚪</i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <div class="dashboard-content">
+          <div>
+            <h2 class="dashboard-title">Candidate Dashboard</h2>
+          </div>
+          
+          <div id="sign-in-reminder" class="sign-in-reminder hidden">
+            <i class="warning-icon">⚠️</i>
+            <span>Please remember to sign in by 09:00</span>
+          </div>
+          
+          <div class="attendance-card">
+            <div class="card-header">
+              <h3 class="card-title">Today's Attendance</h3>
+              <div class="badge">AI Academy 2025</div>
+            </div>
+            
+            <div class="attendance-status">
+              <div class="status-icon not-signed-in" id="status-icon">✕</div>
+              <div class="status-info">
+                <h4 class="status-title" id="status-title">Not Signed In</h4>
+                <p class="status-desc" id="status-description">You have not signed in for today yet</p>
+              </div>
+              <div class="status-time" id="status-time-container">
+                <span class="time-badge">Sign-in closes at 9:15 AM</span>
+              </div>
+            </div>
+            
+            <div id="late-reason-form" class="late-reason-form hidden">
+              <h4 class="form-title">Reason for being late</h4>
+              <textarea id="late-reason" class="reason-textarea" rows="3" placeholder="Please explain why you are late today..."></textarea>
+              <button class="button submit-reason-btn" id="submit-reason-btn">Submit Reason</button>
+            </div>
+            
+            <div class="attendance-actions">
+              <button class="button primary-button" id="sign-in-btn">
+                <i class="check-icon">✓</i>
+                Tap to sign in
+              </button>
+              <button class="button secondary-button" id="view-history-btn">View History</button>
+            </div>
+          </div>
+          
+          <div id="attendance-history" class="history-card hidden">
+            <div class="card-header">
+              <h3 class="card-title">Attendance History</h3>
+            </div>
+            
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                </tr>
+              </thead>
+              <tbody id="history-table-body">
+                <!-- Table rows will be inserted here by JavaScript -->
+              </tbody>
+            </table>
+            
+            <div class="pagination">
+              <button class="pagination-button prev-btn">Previous</button>
+              <button class="pagination-button page-btn active">1</button>
+              <button class="pagination-button next-btn">Next</button>
+            </div>
+            
+            <div class="download-section">
+              <button class="button download-btn" id="download-btn">
+                <i class="download-icon">⬇️</i>
+                Download History
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        © 2025 CAPACITI Digital Attendance System 
+        <a href="/privacy" class="footer-link">Privacy Policy</a>
+        <a href="/help" class="footer-link">Help</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/candidate.js"></script>
+</body>
+</html>
